@@ -8,297 +8,126 @@
 <title>ABREEZ Gaming Hub</title>
 
 <style>
-:root{
- --cyan:#00eaff;
- --blue:#087dff;
- --purple:#bd35ff;
- --bg:#020713;
-}
+:root{--cyan:#00eaff;--blue:#087dff;--purple:#bd35ff;--bg:#020713}
 *{box-sizing:border-box}
-body{
- margin:0;background:var(--bg);color:#f5f8ff;
- font-family:"Trebuchet MS","Segoe UI",sans-serif;
- overflow-x:hidden;
-}
-button,input{font:inherit}
+body{margin:0;background:var(--bg);color:#f5f8ff;font-family:"Trebuchet MS","Segoe UI",sans-serif;overflow-x:hidden}
+button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .screen{display:none;min-height:100vh}
 .screen.active{display:flex}
-
-/* INTRO */
-#intro{
- align-items:center;justify-content:center;padding:14px;
- background:radial-gradient(ellipse at 50% 55%,#061b3d,#020713 65%);
-}
-.intro-card{
- position:relative;width:min(100%,560px);min-height:90vh;
- border:1px solid #173f88;border-radius:18px;
- box-shadow:0 0 18px #075cff35,inset 0 0 20px #075cff15;
- display:flex;flex-direction:column;align-items:center;
- justify-content:center;padding:22px;overflow:hidden;
-}
-.intro-card:before{
- content:"";position:absolute;inset:5px;
- border:1px solid #142b57;border-radius:13px;pointer-events:none;
-}
-.logo-wrap{
- width:min(76vw,390px);aspect-ratio:1;display:grid;
- place-items:center;animation:logoFloat 3s ease-in-out infinite;
-}
-.logo{
- width:100%;height:100%;object-fit:contain;
- filter:drop-shadow(0 0 12px #00bfff45);
- animation:logoGlow 4s ease-in-out infinite alternate;
-}
-.loading-area{
- width:100%;max-width:460px;margin-top:30px;
- display:flex;align-items:center;gap:13px;font-weight:700;
-}
+#intro{align-items:center;justify-content:center;padding:14px;background:radial-gradient(ellipse at 50% 55%,#061b3d,#020713 65%)}
+.intro-card{position:relative;width:min(100%,560px);min-height:90vh;border:1px solid #173f88;border-radius:18px;box-shadow:0 0 18px #075cff35,inset 0 0 20px #075cff15;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;overflow:hidden}
+.intro-card:before{content:"";position:absolute;inset:5px;border:1px solid #142b57;border-radius:13px;pointer-events:none}
+.logo-wrap{width:min(76vw,390px);aspect-ratio:1;display:grid;place-items:center;animation:logoFloat 3s ease-in-out infinite}
+.logo{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 12px #00bfff45);animation:logoGlow 4s ease-in-out infinite alternate}
+.loading-area{width:100%;max-width:460px;margin-top:30px;display:flex;align-items:center;gap:13px;font-weight:700}
 .percent{font-size:19px;min-width:44px;text-align:center}
-.track{
- height:20px;flex:1;border:1px solid #a42cff;
- border-radius:30px;overflow:hidden;background:#050817;
- box-shadow:0 0 8px #00eaff45,inset 0 0 8px #812dff25;
-}
-.fill{
- height:100%;width:0%;border-radius:30px;
- background:linear-gradient(90deg,#00f5ff,#00aaff,#477bff,#a044ff,#f044ff,#00f5ff);
- background-size:300% 100%;
- animation:colorFlow 3s linear infinite,loadingGlow 2s ease-in-out infinite alternate;
- box-shadow:0 0 10px #00eaff;transition:width .025s linear;
-}
-.tagline{
- color:#9bcaff;font-size:12px;letter-spacing:4px;
- margin-top:15px;text-align:center;
-}
-@keyframes logoFloat{
- 0%,100%{transform:translateY(0) scale(1)}
- 50%{transform:translateY(-5px) scale(1.012)}
-}
-@keyframes logoGlow{
- from{filter:drop-shadow(0 0 7px #00bfff35)}
- to{filter:drop-shadow(0 0 17px #a22cff70)}
-}
-@keyframes colorFlow{
- from{background-position:0% 50%}
- to{background-position:300% 50%}
-}
-@keyframes loadingGlow{
- from{filter:brightness(.9);box-shadow:0 0 7px #00eaff,0 0 12px #783cff}
- to{filter:brightness(1.25);box-shadow:0 0 14px #00eaff,0 0 24px #b044ff}
-}
+.track{height:20px;flex:1;border:1px solid #a42cff;border-radius:30px;overflow:hidden;background:#050817;box-shadow:0 0 8px #00eaff45,inset 0 0 8px #812dff25}
+.fill{height:100%;width:0%;border-radius:30px;background:linear-gradient(90deg,#00f5ff,#00aaff,#477bff,#a044ff,#f044ff,#00f5ff);background-size:300% 100%;animation:colorFlow 3s linear infinite,loadingGlow 2s ease-in-out infinite alternate;box-shadow:0 0 10px #00eaff;transition:width .025s linear}
+.tagline{color:#9bcaff;font-size:12px;letter-spacing:4px;margin-top:15px;text-align:center}
+@keyframes logoFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.012)}}
+@keyframes logoGlow{from{filter:drop-shadow(0 0 7px #00bfff35)}to{filter:drop-shadow(0 0 17px #a22cff70)}}
+@keyframes colorFlow{from{background-position:0% 50%}to{background-position:300% 50%}}
+@keyframes loadingGlow{from{filter:brightness(.9);box-shadow:0 0 7px #00eaff,0 0 12px #783cff}to{filter:brightness(1.25);box-shadow:0 0 14px #00eaff,0 0 24px #b044ff}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes appear{
- from{opacity:0;transform:translateY(12px)}
- to{opacity:1;transform:translateY(0)}
-}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes adminPulse{0%,100%{box-shadow:0 0 8px #00eaff55,0 0 18px #8b35ff35}50%{box-shadow:0 0 18px #00eaffaa,0 0 30px #8b35ff80}}
 
 /* LICENSE AND VERIFICATION */
-#license,#verifying,#result{
- align-items:center;justify-content:center;padding:20px;
- background:radial-gradient(ellipse at center,#061b3c,#020713 70%);
-}
-.panel{
- width:min(100%,440px);padding:28px 24px;
- border:1px solid #1559a9;border-radius:18px;
- background:#030b19ed;box-shadow:0 0 24px #006dff30;
- animation:appear .5s ease;
-}
-.small-logo{
- display:block;width:160px;height:120px;
- object-fit:contain;margin:0 auto 8px;
-}
+#license,#verifying,#result{align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at center,#061b3c,#020713 70%)}
+.panel{width:min(100%,440px);padding:28px 24px;border:1px solid #1559a9;border-radius:18px;background:#030b19ed;box-shadow:0 0 24px #006dff30;animation:appear .5s ease}
+.small-logo{display:block;width:160px;height:120px;object-fit:contain;margin:0 auto 8px}
 h1,h2{margin:8px 0 12px;text-align:center}
 h1{font-size:clamp(22px,5vw,30px)}
 h2{font-size:22px}
-.gradient-text{
- color:var(--cyan);
- background:linear-gradient(90deg,#00eaff,#4a9dff,#c44bff,#00eaff);
- background-size:200% auto;background-clip:text;
- -webkit-background-clip:text;-webkit-text-fill-color:transparent;
- animation:colorFlow 3s linear infinite;
-}
-.muted{
- text-align:center;color:#a9bad3;font-size:14px;line-height:1.6;
-}
-.key-input{
- width:100%;padding:15px;border-radius:9px;
- border:1px solid #25548a;background:#071528;color:white;
- outline:none;margin:18px 0;
-}
+.gradient-text{color:var(--cyan);background:linear-gradient(90deg,#00eaff,#4a9dff,#c44bff,#00eaff);background-size:200% auto;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:colorFlow 3s linear infinite}
+.muted{text-align:center;color:#a9bad3;font-size:14px;line-height:1.6}
+.key-input{width:100%;padding:15px;border-radius:9px;border:1px solid #25548a;background:#071528;color:white;outline:none;margin:18px 0}
 .key-input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00cfff35}
-.btn{
- width:100%;padding:14px;border:1px solid #4bceff;
- border-radius:10px;color:#001023;font-weight:800;
- background:linear-gradient(100deg,#00eaff,#087dff,#bd35ff,#087dff,#00eaff);
- background-size:250% 100%;animation:colorFlow 3s linear infinite;
- box-shadow:0 0 16px #00bfff45;
- transition:transform .2s,box-shadow .2s;
-}
+.btn{width:100%;padding:14px;border:1px solid #4bceff;border-radius:10px;color:#001023;font-weight:800;background:linear-gradient(100deg,#00eaff,#087dff,#bd35ff,#087dff,#00eaff);background-size:250% 100%;animation:colorFlow 3s linear infinite;box-shadow:0 0 16px #00bfff45;transition:transform .2s,box-shadow .2s}
 .btn:hover{box-shadow:0 0 25px #00dfff85;transform:translateY(-1px)}
 .btn:active{transform:scale(.985)}
 .status{text-align:center;min-height:22px;color:#ff6d91;font-size:13px;margin-top:12px}
-.spinner{
- width:105px;height:105px;border-radius:50%;
- border:5px solid #10284b;border-top-color:#00eaff;
- border-right-color:#b72dff;animation:spin 2s linear infinite;
- margin:25px auto;box-shadow:0 0 20px #008cff25;
-}
+.spinner{width:105px;height:105px;border-radius:50%;border:5px solid #10284b;border-top-color:#00eaff;border-right-color:#b72dff;animation:spin 2s linear infinite;margin:25px auto;box-shadow:0 0 20px #008cff25}
 .check{font-size:78px;text-align:center;color:#00ffc3;text-shadow:0 0 22px #00ffc3;margin:10px}
 .fail{color:#ff436b}
 
-/* DASHBOARD */
+/* ORIGINAL DASHBOARD DESIGN */
 #dashboard{display:none;min-height:100vh;padding:0;background:#020611}
 #dashboard.active{display:block}
-.dash{
- min-height:100vh;display:grid;
- grid-template-columns:245px minmax(0,1fr);
- background:
- radial-gradient(ellipse at 76% 38%,#092d71aa,transparent 48%),
- radial-gradient(ellipse at 52% 95%,#330c70aa,transparent 40%),
- #02050c;
-}
-.sidebar{
- padding:20px 15px;border:1px solid #15477d;
- border-radius:0 22px 22px 0;
- background:linear-gradient(180deg,#030a19f7,#020611f7);
- box-shadow:0 0 25px #006cff25;
-}
-.brand{
- width:100%;height:160px;object-fit:contain;
- filter:drop-shadow(0 0 13px #00bfff80);margin-bottom:12px;
-}
-.nav{
- display:flex;align-items:center;gap:10px;width:100%;
- padding:12px;margin:6px 0;border:1px solid transparent;
- border-radius:11px;background:transparent;color:#dceaff;
- text-align:left;font-size:14px;transition:.25s;
-}
-.nav:hover,.nav.selected{
- border-color:#a34bff;
- background:linear-gradient(100deg,#007dff,#4112c5,#8316db);
- box-shadow:0 0 18px #008dff50;
-}
+.dash{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr);background:radial-gradient(ellipse at 76% 38%,#092d71aa,transparent 48%),radial-gradient(ellipse at 52% 95%,#330c70aa,transparent 40%),#02050c}
+.sidebar{padding:20px 15px;border:1px solid #15477d;border-radius:0 22px 22px 0;background:linear-gradient(180deg,#030a19f7,#020611f7);box-shadow:0 0 25px #006cff25}
+.brand{width:100%;height:160px;object-fit:contain;filter:drop-shadow(0 0 13px #00bfff80);margin-bottom:12px}
+.nav{display:flex;align-items:center;gap:10px;width:100%;padding:12px;margin:6px 0;border:1px solid transparent;border-radius:11px;background:transparent;color:#dceaff;text-align:left;font-size:14px;transition:.25s}
+.nav:hover,.nav.selected{border-color:#a34bff;background:linear-gradient(100deg,#007dff,#4112c5,#8316db);box-shadow:0 0 18px #008dff50}
 .nav-divider{height:1px;background:#1a5a8a;margin:17px 5px}
 main{min-width:0;padding:23px}
-.search{
- width:100%;padding:14px 17px;border:1px solid #1262bc;
- border-radius:30px;background:#061329;color:white;margin-bottom:18px;
- box-shadow:0 0 12px #007bff20;
-}
-.hero{
- position:relative;overflow:hidden;padding:30px;min-height:300px;
- border:1px solid #16447d;border-radius:18px;
- background:
- radial-gradient(ellipse at 80% 25%,#6725b655,transparent 45%),
- radial-gradient(ellipse at 30% 65%,#087dff55,transparent 60%),
- linear-gradient(110deg,#04132aee,#061c42cc);
-}
-.hero:after{
- content:"";position:absolute;inset:0;pointer-events:none;
- background:linear-gradient(110deg,transparent 30%,#00dfff08 50%,transparent 70%);
-}
-.hero h1{
- position:relative;text-align:left;font-size:clamp(34px,5vw,68px);
- letter-spacing:3px;margin:8px 0;
-}
+.search{width:100%;padding:14px 17px;border:1px solid #1262bc;border-radius:30px;background:#061329;color:white;margin-bottom:18px;box-shadow:0 0 12px #007bff20}
+.hero{position:relative;overflow:hidden;padding:30px;min-height:300px;border:1px solid #16447d;border-radius:18px;background:radial-gradient(ellipse at 80% 25%,#6725b655,transparent 45%),radial-gradient(ellipse at 30% 65%,#087dff55,transparent 60%),linear-gradient(110deg,#04132aee,#061c42cc)}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,#00dfff08 50%,transparent 70%)}
+.hero h1{position:relative;text-align:left;font-size:clamp(34px,5vw,68px);letter-spacing:3px;margin:8px 0}
 .hero h2{text-align:left;letter-spacing:5px}
 .hero p{color:#bbd5f6;line-height:1.7}
 .welcome-label{font-size:15px;letter-spacing:5px;color:#9bcaff}
 .stats{display:flex;flex-wrap:wrap;gap:20px;color:#80eaff;font-size:13px;margin-top:18px}
 .stat{display:flex;align-items:center;gap:9px}
 .stat-icon{font-size:27px;text-shadow:0 0 12px #00eaff}
-.section-heading{
- display:flex;align-items:center;justify-content:space-between;
- gap:10px;margin:23px 0 14px;
-}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:23px 0 14px}
 .section-heading h2{font-size:13px;letter-spacing:2px;margin:0}
 .section-heading span{font-size:10px;color:#91a9ce;letter-spacing:1px}
 .resource-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.resource{
- --glow:#00dfff;min-width:0;min-height:280px;
- display:flex;flex-direction:column;padding:13px 10px;
- border:1px solid var(--glow);border-radius:20px;
- background:radial-gradient(ellipse at 50% 25%,#143e7655,transparent 60%),linear-gradient(160deg,#08172ff5,#030817);
- box-shadow:0 0 18px #007bff22;transition:transform .25s,box-shadow .25s;
-}
+.resource{--glow:#00dfff;min-width:0;min-height:280px;display:flex;flex-direction:column;padding:13px 10px;border:1px solid var(--glow);border-radius:20px;background:radial-gradient(ellipse at 50% 25%,#143e7655,transparent 60%),linear-gradient(160deg,#08172ff5,#030817);box-shadow:0 0 18px #007bff22;transition:transform .25s,box-shadow .25s}
 .resource:nth-child(2){--glow:#d23cff}
 .resource:nth-child(3){--glow:#00eaff}
 .resource:nth-child(4){--glow:#438cff}
 .resource:hover{transform:translateY(-4px);box-shadow:0 0 24px #087dff55}
 .resource-art{min-height:100px;display:grid;place-items:center}
-.symbol{
- width:72px;height:72px;display:grid;place-items:center;
- border:1px solid var(--glow);border-radius:20px;
- background:linear-gradient(145deg,#12356b,#070d23);
- color:var(--glow);font-size:40px;text-shadow:0 0 18px var(--glow);
- box-shadow:0 0 22px #007bff30;
-}
+.symbol{width:72px;height:72px;display:grid;place-items:center;border:1px solid var(--glow);border-radius:20px;background:linear-gradient(145deg,#12356b,#070d23);color:var(--glow);font-size:40px;text-shadow:0 0 18px var(--glow);box-shadow:0 0 22px #007bff30}
 .resource h2{text-align:center;font-size:15px;line-height:1.5}
 .resource p{font-size:12px;line-height:1.6;color:#a9bad3;text-align:center;flex:1}
 .resource .btn{margin-top:8px;padding:11px 4px;font-size:11px}
 .resource-page{min-height:100vh}
-.resource-top{
- display:flex;align-items:center;gap:14px;padding:14px 18px;
- border:1px solid #1559a9;border-radius:15px;
- background:#030b19ed;box-shadow:0 0 20px #006dff20;
-}
+.resource-top{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid #1559a9;border-radius:15px;background:#030b19ed;box-shadow:0 0 20px #006dff20}
 .resource-top img{width:85px;height:75px;object-fit:contain}
 .resource-top h1{text-align:left;font-size:clamp(19px,3vw,30px)}
-.resource-content{
- max-width:950px;margin:22px auto;padding:22px;
- border:1px solid #16447d;border-radius:16px;background:#030b19ed;
-}
+.resource-content{max-width:950px;margin:22px auto;padding:22px;border:1px solid #16447d;border-radius:16px;background:#030b19ed}
 .resource-content h2{text-align:left;color:#00eaff;margin-top:25px}
-.empty{
- padding:30px 15px;border:1px dashed #286096;border-radius:14px;
- text-align:center;color:#9fb6d9;background:#040c1c;
-}
+.empty{padding:30px 15px;border:1px dashed #286096;border-radius:14px;text-align:center;color:#9fb6d9;background:#040c1c}
 .empty strong{display:block;color:#eaf6ff;font-size:17px;margin-bottom:8px}
 .resource-list{display:grid;gap:12px;margin-top:18px}
-.resource-item{
- padding:16px;border:1px solid #24518a;border-radius:12px;
- background:#07152a;
-}
+.resource-item{padding:16px;border:1px solid #24518a;border-radius:12px;background:#07152a}
 .resource-item h3{margin:0 0 8px;color:#e9f5ff}
 .resource-item a{color:#00eaff;overflow-wrap:anywhere}
-.back{
- color:#9deaff;background:#071b32;border:1px solid #1c68ad;
- border-radius:8px;padding:11px 14px;
-}
 [hidden]{display:none!important}
 
-@media(max-width:1050px){
- .dash{grid-template-columns:205px minmax(0,1fr)}
- main{padding:15px}
- .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:650px){
- .dash{grid-template-columns:1fr}
- .sidebar{padding:12px;border-radius:0 0 18px 18px}
- .brand{height:85px;margin-bottom:7px}
- .nav{display:inline-flex;width:auto;padding:9px;margin:3px;font-size:12px}
- .nav-divider{margin:9px}
- main{padding:12px 10px}
- .hero{padding:20px;min-height:245px}
- .hero h2{letter-spacing:3px}
- .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .resource{min-height:250px;padding:10px 8px}
- .resource-art{min-height:90px}
- .symbol{width:62px;height:62px;font-size:35px}
- .resource h2{font-size:12px}
- .resource p{font-size:11px}
- .resource .btn{font-size:10px}
- .resource-content{padding:15px}
- .intro-card{min-height:88vh}
- .logo-wrap{width:min(78vw,330px)}
-}
+/* ADDED ADMIN, CONTACT AND HELP STYLES */
+.admin-nav{border-color:#00dfff55;animation:adminPulse 2.5s ease-in-out infinite}
+.admin-avatar{display:inline-grid;place-items:center;width:24px;height:24px;flex-shrink:0;border:1px solid #00eaff;border-radius:50%;background:linear-gradient(145deg,#087dff,#bd35ff);box-shadow:0 0 12px #00eaff70;animation:adminPulse 2s infinite}
+.admin-avatar:after{content:"";width:9px;height:9px;border:2px solid white;border-radius:50%;box-shadow:0 8px 0 -2px white}
+.form-label{display:block;margin:14px 0 7px;color:#bde7ff;font-size:13px}
+.form-control{width:100%;padding:12px;border:1px solid #25548a;border-radius:9px;background:#071528;color:white;outline:none}
+.form-control:focus{border-color:var(--cyan);box-shadow:0 0 12px #00cfff25}
+textarea.form-control{min-height:110px;resize:vertical}
+select.form-control option{background:#071528;color:white}
+.content-btn{display:inline-block;width:auto;padding:10px 14px;margin:5px 5px 5px 0;border:1px solid #168bd1;border-radius:9px;background:#071b32;color:#bceeff;font-weight:bold}
+.content-btn:hover{background:#0b2d50}
+.danger-btn{border-color:#ff5578;color:#ff9bb0}
+.info-box{margin:16px 0;padding:14px;border:1px solid #1b5c8e;border-radius:11px;background:#06152b;color:#b9cce8;font-size:13px;line-height:1.7}
+.page-copy{color:#c1d3ed;line-height:1.85}
+.page-copy h3{color:#00eaff}
+.admin-preview{width:64px;height:64px;object-fit:contain;border-radius:10px;border:1px solid #24518a;background:#020713;margin-top:10px}
+.admin-resource-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.contact-link{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px;margin:10px 0;border:1px solid #00eaff;border-radius:10px;color:#eaffff;text-decoration:none;font-weight:bold;background:linear-gradient(100deg,#087dff,#087b75,#087dff);box-shadow:0 0 16px #00bfff30}
+.file-note{font-size:12px;color:#9db8d9;line-height:1.6}
+.resource-item .resource-icon{width:45px;height:45px;object-fit:contain;vertical-align:middle;margin-right:10px;border-radius:8px}
+.resource-item .emoji-icon{font-size:30px;margin-right:10px;vertical-align:middle}
+@media(max-width:1050px){.dash{grid-template-columns:205px minmax(0,1fr)}main{padding:15px}.resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.dash{grid-template-columns:1fr}.sidebar{padding:12px;border-radius:0 0 18px 18px}.brand{height:85px;margin-bottom:7px}.nav{display:inline-flex;width:auto;padding:9px;margin:3px;font-size:12px}.nav-divider{margin:9px}main{padding:12px 10px}.hero{padding:20px;min-height:245px}.hero h2{letter-spacing:3px}.resource-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.resource{min-height:250px;padding:10px 8px}.resource-art{min-height:90px}.symbol{width:62px;height:62px;font-size:35px}.resource h2{font-size:12px}.resource p{font-size:11px}.resource .btn{font-size:10px}.resource-content{padding:15px}.intro-card{min-height:88vh}.logo-wrap{width:min(78vw,330px)}}
 </style>
 </head>
 
 <body>
 
-<!-- INTRO: ORIGINAL FLOW -->
 <section id="intro" class="screen active">
  <div class="intro-card">
   <div class="logo-wrap">
@@ -313,7 +142,6 @@ main{min-width:0;padding:23px}
  </div>
 </section>
 
-<!-- LICENSE: ORIGINAL FLOW -->
 <section id="license" class="screen">
  <div class="panel">
   <img class="small-logo" src="./96D9E65E-3CD4-4E31-82A6-A87F2BCF988D.jpeg" alt="ABREEZ logo">
@@ -347,7 +175,6 @@ main{min-width:0;padding:23px}
  </div>
 </section>
 
-<!-- DASHBOARD -->
 <section id="dashboard" class="screen">
  <div class="dash">
   <aside class="sidebar">
@@ -361,6 +188,7 @@ main{min-width:0;padding:23px}
    <button class="nav" data-target="About Us">ⓘ &nbsp; About Us</button>
    <button class="nav" data-target="Contact">✉ &nbsp; Contact</button>
    <button class="nav" data-target="Support">☏ &nbsp; Support</button>
+   <button class="nav admin-nav" id="adminNav" type="button"><span class="admin-avatar"></span> Admin Panel</button>
   </aside>
 
   <main>
@@ -418,9 +246,7 @@ main{min-width:0;padding:23px}
     <div class="resource-content">
      <button class="back" id="backBtn">← Back to Dashboard</button>
      <h2 id="sectionTitle">APP LINKS</h2>
-     <div id="resourceList" class="resource-list">
-      <div class="empty"><strong>NOTHING FOUND YET</strong>No links or files have been added yet.</div>
-     </div>
+     <div id="resourceList" class="resource-list"></div>
     </div>
    </div>
   </main>
@@ -428,8 +254,20 @@ main{min-width:0;padding:23px}
 </section>
 
 <script>
+/*
+This version stores Admin resources in this browser only.
+For secure admin authentication and resources shared across every visitor,
+a backend/database is required.
+*/
 const USER_KEY="ABREEZ-HUB-2010-ACCESS-TOOLKIT";
+const ADMIN_KEY="ABREEZ-ADMIN-7X9K-PRIVATE-2046";
+const RESOURCE_STORAGE_KEY="abreezHubResources_v1";
+const WHATSAPP_NUMBER="923144555444";
+const WHATSAPP_MESSAGE="Assalam-o-Alaikum Abreez! I need help with ABREEZ Gaming Hub.";
 const $=id=>document.getElementById(id);
+let adminAuthenticated=false;
+let editingResourceId=null;
+let selectedIconData="";
 
 function show(id){
  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
@@ -437,7 +275,7 @@ function show(id){
  window.scrollTo(0,0);
 }
 
-/* Original intro loading */
+/* Original intro animation */
 const startTime=performance.now();
 function animateIntro(now){
  const progress=Math.min((now-startTime)/3030,1);
@@ -450,7 +288,7 @@ function animateIntro(now){
 }
 requestAnimationFrame(animateIntro);
 
-/* Original license verification flow */
+/* Original regular license verification */
 $("licenseForm").addEventListener("submit",async event=>{
  event.preventDefault();
  const key=$("keyInput").value.trim();
@@ -489,37 +327,360 @@ $("continueBtn").addEventListener("click",()=>{
  }
 });
 
-/* Dashboard tabs */
+/* Local resource storage */
+function getResources(){
+ try{
+  const data=JSON.parse(localStorage.getItem(RESOURCE_STORAGE_KEY)||"[]");
+  return Array.isArray(data)?data:[];
+ }catch(error){return []}
+}
+function saveResources(resources){
+ try{
+  localStorage.setItem(RESOURCE_STORAGE_KEY,JSON.stringify(resources));
+  return true;
+ }catch(error){
+  alert("Could not save this item. The icon may be too large for browser storage. Try a smaller image.");
+  return false;
+ }
+}
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,char=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[char]));
+}
+function safeURL(value){
+ try{
+  const url=new URL(value);
+  return ["http:","https:"].includes(url.protocol)?url.href:"";
+ }catch(error){return ""}
+}
+function makeIconMarkup(item){
+ if(item.iconData)return '<img class="resource-icon" src="'+item.iconData+'" alt="">';
+ return '<span class="emoji-icon">'+escapeHTML(item.icon||"🔗")+'</span>';
+}
 function openSection(name){
  $("homePage").hidden=true;
  $("resourcePage").hidden=false;
  $("sectionTitle").textContent=name.toUpperCase();
- $("resourceList").innerHTML=
-  '<div class="empty"><strong>NOTHING FOUND YET</strong>No links or files have been added to this section yet.</div>';
  document.querySelectorAll(".nav").forEach(button=>{
   button.classList.toggle("selected",button.dataset.target===name);
  });
+ renderSection(name);
+}
+function renderSection(name){
+ const list=$("resourceList");
+
+ if(name==="About Us"){
+  list.innerHTML=`
+   <div class="page-copy">
+    <h3>Hello, Assalam-o-Alaikum! How are you all?</h3>
+    <p>Welcome to ABREEZ Gaming Hub! I am Abreez Ahmed, the creator of this website.</p>
+    <p>I created this website to bring different types of games, useful applications, app links, gaming resources, proxy resources, MediaFire links, downloads and other helpful online services together in one place.</p>
+    <p>My goal is to make it easier for visitors to discover useful resources without having to search many different websites. I will keep working to improve the website and add more useful content over time.</p>
+    <p>Explore the sections, check out the available resources, and use the Contact or Support section if you need help.</p>
+    <p>Thank you for visiting ABREEZ Gaming Hub. Keep gaming, keep exploring, and enjoy your experience!</p>
+    <h3>— Abreez Ahmed</h3>
+   </div>`;
+  return;
+ }
+
+ if(name==="Contact"){
+  const message=encodeURIComponent(WHATSAPP_MESSAGE);
+  const whatsappURL="https://wa.me/"+WHATSAPP_NUMBER+"?text="+message;
+  list.innerHTML=`
+   <div class="page-copy">
+    <h3>Contact ABREEZ</h3>
+    <p>Need to contact me about the website, a broken link, a suggestion, or a resource request? Message me directly on WhatsApp.</p>
+    <a class="contact-link" href="${whatsappURL}" target="_blank" rel="noopener noreferrer">☏ &nbsp; Contact on WhatsApp</a>
+    <p class="file-note">WhatsApp will open a chat with Abreez and prepare a message for you. Review the message and press Send when you are ready.</p>
+   </div>`;
+  return;
+ }
+
+ if(name==="Support"){
+  list.innerHTML=`
+   <div class="page-copy">
+    <h3>Help & Support</h3>
+    <p>Welcome to the Help section. Follow these steps to use ABREEZ Gaming Hub:</p>
+    <div class="info-box">
+     <b>1. Enter your license key</b><br>Use your regular website license key on the opening screen.<br><br>
+     <b>2. Explore the dashboard</b><br>Choose App Links, Proxy Servers, Other Games, or Other Services from the sidebar or home cards.<br><br>
+     <b>3. Open a resource</b><br>When resources are available, select their links to open the relevant website or download page. Check links carefully before downloading anything.<br><br>
+     <b>4. About and Contact</b><br>Visit About Us to learn about the website or Contact to reach the creator.<br><br>
+     <b>5. Report a problem</b><br>Use the form below if a link is broken, you need help, or you have a suggestion.
+    </div>
+    <h3>What kind of help do you need?</h3>
+    <form id="helpForm">
+     <label class="form-label" for="helpType">Select a topic</label>
+     <select class="form-control" id="helpType" required>
+      <option value="">Choose a help topic</option>
+      <option>Website navigation</option>
+      <option>Broken or unavailable link</option>
+      <option>Download issue</option>
+      <option>License key issue</option>
+      <option>Request a new resource</option>
+      <option>Suggestion or feedback</option>
+      <option>Other</option>
+     </select>
+     <label class="form-label" for="helpDetails">Explain your issue or request</label>
+     <textarea class="form-control" id="helpDetails" placeholder="Tell us what happened and what you need help with..." required maxlength="2000"></textarea>
+     <label class="form-label" for="helpReply">Your contact details (optional)</label>
+     <input class="form-control" id="helpReply" placeholder="Email or WhatsApp number (optional)" maxlength="120">
+     <button class="btn" type="submit" style="margin-top:16px">Send Request on WhatsApp →</button>
+    </form>
+    <p class="file-note">Your request will be prepared as a WhatsApp message. Review it and press Send to contact the website owner.</p>
+   </div>`;
+  $("helpForm").addEventListener("submit",event=>{
+   event.preventDefault();
+   const request=[
+    "Assalam-o-Alaikum Abreez! I need help with ABREEZ Gaming Hub.",
+    "",
+    "Topic: "+$("helpType").value,
+    "Details: "+$("helpDetails").value.trim(),
+    "Contact: "+($("helpReply").value.trim()||"Not provided")
+   ].join("\n");
+   const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(request);
+   window.open(url,"_blank","noopener,noreferrer");
+  });
+  return;
+ }
+
+ if(name==="Admin Panel"){
+  renderAdmin();
+  return;
+ }
+
+ const resources=getResources().filter(item=>item.category===name);
+ if(!resources.length){
+  list.innerHTML='<div class="empty"><strong>NOTHING FOUND YET</strong>No links or files have been added to this section yet.</div>';
+  return;
+ }
+ list.innerHTML=resources.map(item=>{
+  const url=safeURL(item.url);
+  return `<article class="resource-item">
+   <h3>${makeIconMarkup(item)}${escapeHTML(item.name)}</h3>
+   ${item.description?'<p class="page-copy">'+escapeHTML(item.description)+'</p>':""}
+   ${url?'<a href="'+escapeHTML(url)+'" target="_blank" rel="noopener noreferrer">Open resource ↗</a>':'<p class="file-note">No valid link available.</p>'}
+  </article>`;
+ }).join("");
 }
 
+/* ADMIN PANEL */
+function renderAdmin(){
+ const list=$("resourceList");
+ if(!adminAuthenticated){
+  list.innerHTML=`
+   <div class="panel" style="margin:18px auto">
+    <div style="text-align:center;font-size:42px;animation:adminPulse 2s infinite">◉</div>
+    <h2 class="gradient-text">ADMIN ACCESS</h2>
+    <p class="muted">Enter the separate Admin Panel key to continue.</p>
+    <form id="adminLoginForm">
+     <input class="key-input" id="adminKeyInput" type="password" placeholder="Enter admin key..." autocomplete="off" required>
+     <button class="btn" type="submit">VERIFY ADMIN KEY →</button>
+    </form>
+    <p id="adminLoginStatus" class="status"></p>
+   </div>`;
+  $("adminLoginForm").addEventListener("submit",event=>{
+   event.preventDefault();
+   if($("adminKeyInput").value.trim()===ADMIN_KEY){
+    adminAuthenticated=true;
+    renderAdmin();
+   }else{
+    $("adminLoginStatus").textContent="Incorrect admin key. Access denied.";
+    $("adminKeyInput").value="";
+   }
+  });
+  return;
+ }
+
+ const resources=getResources();
+ list.innerHTML=`
+  <div class="page-copy">
+   <h3>Admin Dashboard</h3>
+   <p>Add, edit or delete resources for the website categories.</p>
+  </div>
+  <div class="info-box"><b>Storage notice:</b> Items are saved in this browser's local storage. They remain after refreshing this browser, but do not automatically appear on other visitors' devices.</div>
+  <form id="resourceForm">
+   <label class="form-label" for="resourceName">Resource name</label>
+   <input class="form-control" id="resourceName" maxlength="100" placeholder="Enter resource name" required>
+   <label class="form-label" for="resourceURL">Resource URL</label>
+   <input class="form-control" id="resourceURL" type="url" placeholder="https://example.com/resource" required>
+   <label class="form-label" for="resourceCategory">Category</label>
+   <select class="form-control" id="resourceCategory" required>
+    <option value="App Links">App Links</option>
+    <option value="Proxy Servers">Proxy Servers</option>
+    <option value="Other Games">Other Games</option>
+    <option value="Other Services">Other Services</option>
+   </select>
+   <label class="form-label" for="resourceEmoji">Icon or emoji (optional)</label>
+   <input class="form-control" id="resourceEmoji" maxlength="8" placeholder="Example: 🎮 or 🔗">
+   <label class="form-label" for="resourceIconFile">Upload icon image (optional)</label>
+   <input class="form-control" id="resourceIconFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+   <p class="file-note">Choose an image smaller than 500 KB for best results.</p>
+   <label class="form-label" for="resourceDescription">Description (optional)</label>
+   <textarea class="form-control" id="resourceDescription" maxlength="500" placeholder="Short description of this resource"></textarea>
+   <button class="btn" id="saveResourceBtn" type="submit" style="margin-top:16px">＋ Save Resource</button>
+   <button class="content-btn" id="cancelEditBtn" type="button" hidden>Cancel Edit</button>
+  </form>
+  <h3 style="color:#00eaff;margin-top:28px">Manage Existing Resources (${resources.length})</h3>
+  <div id="adminResourceList" class="resource-list"></div>
+  <button class="content-btn danger-btn" id="adminLogoutBtn" type="button">Log Out of Admin</button>`;
+ renderAdminResourceList();
+
+ $("resourceIconFile").addEventListener("change",handleIconUpload);
+ $("resourceForm").addEventListener("submit",saveResourceForm);
+ $("cancelEditBtn").addEventListener("click",resetResourceForm);
+ $("adminLogoutBtn").addEventListener("click",()=>{
+  adminAuthenticated=false;
+  editingResourceId=null;
+  selectedIconData="";
+  renderAdmin();
+ });
+}
+function handleIconUpload(event){
+ const file=event.target.files&&event.target.files[0];
+ if(!file){selectedIconData="";return}
+ if(!file.type.startsWith("image/")){
+  alert("Please select an image file.");
+  event.target.value="";
+  return;
+ }
+ if(file.size>500*1024){
+  alert("Please choose an image smaller than 500 KB.");
+  event.target.value="";
+  return;
+ }
+ const reader=new FileReader();
+ reader.onload=()=>{
+  selectedIconData=String(reader.result||"");
+  const oldPreview=$("resourceIconPreview");
+  if(oldPreview)oldPreview.remove();
+  const img=document.createElement("img");
+  img.id="resourceIconPreview";
+  img.className="admin-preview";
+  img.src=selectedIconData;
+  event.target.insertAdjacentElement("afterend",img);
+ };
+ reader.readAsDataURL(file);
+}
+function saveResourceForm(event){
+ event.preventDefault();
+ const name=$("resourceName").value.trim();
+ const url=safeURL($("resourceURL").value.trim());
+ const category=$("resourceCategory").value;
+ const emoji=$("resourceEmoji").value.trim()||"🔗";
+ const description=$("resourceDescription").value.trim();
+
+ if(!name||!url){
+  alert("Please enter a name and a valid http/https URL.");
+  return;
+ }
+ const wasEditing=Boolean(editingResourceId);
+ const resources=getResources();
+ const old=editingResourceId?resources.find(item=>item.id===editingResourceId):null;
+ const item={
+  id:editingResourceId||(Date.now().toString(36)+Math.random().toString(36).slice(2,8)),
+  name,url,category,icon:emoji,
+  iconData:selectedIconData||(old?old.iconData:""),
+  description
+ };
+ const updated=editingResourceId
+  ?resources.map(resource=>resource.id===editingResourceId?item:resource)
+  :[...resources,item];
+
+ if(!saveResources(updated))return;
+ resetResourceForm();
+ renderAdmin();
+ alert(wasEditing?"Resource updated successfully.":"Resource saved in this browser.");
+}
+function renderAdminResourceList(){
+ const host=$("adminResourceList");
+ if(!host)return;
+ const resources=getResources();
+ if(!resources.length){
+  host.innerHTML='<div class="empty"><strong>NO RESOURCES ADDED</strong>Your saved resources will appear here.</div>';
+  return;
+ }
+ host.innerHTML=resources.map(item=>`
+  <article class="resource-item">
+   <h3>${makeIconMarkup(item)}${escapeHTML(item.name)}</h3>
+   <p class="file-note">Category: ${escapeHTML(item.category)}</p>
+   <p><a href="${escapeHTML(safeURL(item.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.url)}</a></p>
+   <div class="admin-resource-actions">
+    <button class="content-btn" type="button" data-edit-resource="${escapeHTML(item.id)}">✎ Edit</button>
+    <button class="content-btn danger-btn" type="button" data-delete-resource="${escapeHTML(item.id)}">✕ Delete</button>
+   </div>
+  </article>`).join("");
+
+ host.querySelectorAll("[data-edit-resource]").forEach(button=>{
+  button.addEventListener("click",()=>editResource(button.dataset.editResource));
+ });
+ host.querySelectorAll("[data-delete-resource]").forEach(button=>{
+  button.addEventListener("click",()=>deleteResource(button.dataset.deleteResource));
+ });
+}
+function editResource(id){
+ const item=getResources().find(resource=>resource.id===id);
+ if(!item)return;
+ editingResourceId=id;
+ selectedIconData=item.iconData||"";
+ $("resourceName").value=item.name;
+ $("resourceURL").value=item.url;
+ $("resourceCategory").value=item.category;
+ $("resourceEmoji").value=item.icon||"";
+ $("resourceDescription").value=item.description||"";
+ $("resourceIconFile").value="";
+ const preview=$("resourceIconPreview");
+ if(preview)preview.remove();
+ if(item.iconData){
+  const img=document.createElement("img");
+  img.id="resourceIconPreview";
+  img.className="admin-preview";
+  img.src=item.iconData;
+  $("resourceIconFile").insertAdjacentElement("afterend",img);
+ }
+ $("saveResourceBtn").textContent="✓ Update Resource";
+ $("cancelEditBtn").hidden=false;
+ $("resourceForm").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function deleteResource(id){
+ const item=getResources().find(resource=>resource.id===id);
+ if(!item)return;
+ if(!confirm('Delete "'+item.name+'"? This cannot be undone in this browser.'))return;
+ if(saveResources(getResources().filter(resource=>resource.id!==id)))renderAdmin();
+}
+function resetResourceForm(){
+ editingResourceId=null;
+ selectedIconData="";
+ const form=$("resourceForm");
+ if(form)form.reset();
+ const preview=$("resourceIconPreview");
+ if(preview)preview.remove();
+ const saveButton=$("saveResourceBtn");
+ if(saveButton)saveButton.textContent="＋ Save Resource";
+ const cancelButton=$("cancelEditBtn");
+ if(cancelButton)cancelButton.hidden=true;
+}
+
+/* Dashboard navigation */
 document.querySelectorAll("[data-open]").forEach(button=>{
  button.addEventListener("click",()=>openSection(button.dataset.open));
 });
-
-document.querySelectorAll(".nav").forEach(button=>{
+document.querySelectorAll(".nav[data-target]").forEach(button=>{
  button.addEventListener("click",()=>{
   const name=button.dataset.target;
   if(name==="Home"){
    $("homePage").hidden=false;
    $("resourcePage").hidden=true;
-   document.querySelectorAll(".nav").forEach(n=>{
-    n.classList.toggle("selected",n===button);
+   document.querySelectorAll(".nav").forEach(nav=>{
+    nav.classList.toggle("selected",nav===button);
    });
   }else{
    openSection(name);
   }
  });
 });
-
+$("adminNav").addEventListener("click",()=>openSection("Admin Panel"));
 $("backBtn").addEventListener("click",()=>{
  $("homePage").hidden=false;
  $("resourcePage").hidden=true;
@@ -528,12 +689,11 @@ $("backBtn").addEventListener("click",()=>{
  });
 });
 
-/* Search on home cards */
+/* Search home cards */
 $("search").addEventListener("input",()=>{
  const query=$("search").value.toLowerCase().trim();
  document.querySelectorAll(".resource").forEach(card=>{
-  card.style.display=card.textContent.toLowerCase().includes(query)
-   ?"flex":"none";
+  card.style.display=card.textContent.toLowerCase().includes(query)?"flex":"none";
  });
 });
 </script>
