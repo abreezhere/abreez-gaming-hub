@@ -780,7 +780,7 @@ function renderAdmin(){
     }
 
     try{
-      await adminCall(editId?"update":"create",{resource:item});
+      await adminCall(editId?"update":"create",{...item,resource:item});
 
       editId=null;
       uploadedIcon="";
